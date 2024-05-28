@@ -5,6 +5,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.GameType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.player.Player;
@@ -15,7 +16,6 @@ import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.network.chat.Component;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.client.Minecraft;
 
@@ -29,40 +29,21 @@ public class DieFeedingProcedureProcedure {
 	public static void onRightClickEntity(PlayerInteractEvent.EntityInteract event) {
 		if (event.getHand() != event.getEntity().getUsedItemHand())
 			return;
-		execute(event, event.getTarget(), event.getEntity());
+		execute(event, event.getLevel(), event.getTarget(), event.getEntity());
 	}
 
-	public static void execute(Entity entity, Entity sourceentity) {
-		execute(null, entity, sourceentity);
+	public static void execute(LevelAccessor world, Entity entity, Entity sourceentity) {
+		execute(null, world, entity, sourceentity);
 	}
 
-	private static void execute(@Nullable Event event, Entity entity, Entity sourceentity) {
+	private static void execute(@Nullable Event event, LevelAccessor world, Entity entity, Entity sourceentity) {
 		if (entity == null || sourceentity == null)
 			return;
 		if (!(entity instanceof TamableAnimal _tamEnt ? _tamEnt.isTame() : false)) {
 			if ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == FundysCursedFoodModItems.SALMUTTOTABREABBITLECOCHICARROCHOPOTATIE_PIE_CAKE.get()) {
 				if (sourceentity instanceof LivingEntity _entity)
 					_entity.swing(InteractionHand.MAIN_HAND, true);
-				if (entity instanceof LivingEntity _entity)
-					_entity.hurt(new DamageSource(_entity.level().registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.GENERIC)) {
-						@Override
-						public Component getLocalizedDeathMessage(LivingEntity _msgEntity) {
-							String _translatekey = "death.attack." + "heartAttack";
-							if (this.getEntity() == null && this.getDirectEntity() == null) {
-								return _msgEntity.getKillCredit() != null
-										? Component.translatable(_translatekey + ".player", _msgEntity.getDisplayName(), _msgEntity.getKillCredit().getDisplayName())
-										: Component.translatable(_translatekey, _msgEntity.getDisplayName());
-							} else {
-								Component _component = this.getEntity() == null ? this.getDirectEntity().getDisplayName() : this.getEntity().getDisplayName();
-								ItemStack _itemstack = ItemStack.EMPTY;
-								if (this.getEntity() instanceof LivingEntity _livingentity)
-									_itemstack = _livingentity.getMainHandItem();
-								return !_itemstack.isEmpty() && _itemstack.hasCustomHoverName()
-										? Component.translatable(_translatekey + ".item", _msgEntity.getDisplayName(), _component, _itemstack.getDisplayName())
-										: Component.translatable(_translatekey, _msgEntity.getDisplayName(), _component);
-							}
-						}
-					}, (float) Math.pow(2, 24));
+				entity.hurt(new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.GENERIC)), (float) Math.pow(2, 24));
 				if (!(new Object() {
 					public boolean checkGamemode(Entity _ent) {
 						if (_ent instanceof ServerPlayer _serverPlayer) {
@@ -89,26 +70,7 @@ public class DieFeedingProcedureProcedure {
 			} else if ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == FundysCursedFoodModItems.SALMUTTOTABREABBITLECOCHICARROCHOPOTATIE_PIE_CAKE.get()) {
 				if (sourceentity instanceof LivingEntity _entity)
 					_entity.swing(InteractionHand.OFF_HAND, true);
-				if (entity instanceof LivingEntity _entity)
-					_entity.hurt(new DamageSource(_entity.level().registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.GENERIC)) {
-						@Override
-						public Component getLocalizedDeathMessage(LivingEntity _msgEntity) {
-							String _translatekey = "death.attack." + "heartAttack";
-							if (this.getEntity() == null && this.getDirectEntity() == null) {
-								return _msgEntity.getKillCredit() != null
-										? Component.translatable(_translatekey + ".player", _msgEntity.getDisplayName(), _msgEntity.getKillCredit().getDisplayName())
-										: Component.translatable(_translatekey, _msgEntity.getDisplayName());
-							} else {
-								Component _component = this.getEntity() == null ? this.getDirectEntity().getDisplayName() : this.getEntity().getDisplayName();
-								ItemStack _itemstack = ItemStack.EMPTY;
-								if (this.getEntity() instanceof LivingEntity _livingentity)
-									_itemstack = _livingentity.getMainHandItem();
-								return !_itemstack.isEmpty() && _itemstack.hasCustomHoverName()
-										? Component.translatable(_translatekey + ".item", _msgEntity.getDisplayName(), _component, _itemstack.getDisplayName())
-										: Component.translatable(_translatekey, _msgEntity.getDisplayName(), _component);
-							}
-						}
-					}, (float) Math.pow(2, 24));
+				entity.hurt(new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.GENERIC)), (float) Math.pow(2, 24));
 				if (!(new Object() {
 					public boolean checkGamemode(Entity _ent) {
 						if (_ent instanceof ServerPlayer _serverPlayer) {

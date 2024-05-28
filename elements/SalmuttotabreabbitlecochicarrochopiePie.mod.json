@@ -1,5 +1,5 @@
 {
-  "_fv": 51,
+  "_fv": 60,
   "_type": "item",
   "definition": {
     "renderType": 0,
@@ -37,6 +37,8 @@
     "guiBoundTo": "<NONE>",
     "inventorySize": 9,
     "inventoryStackSize": 64,
+    "enableRanged": false,
+    "shootConstantly": false,
     "isFood": true,
     "nutritionalValue": 68,
     "saturation": 72.0,

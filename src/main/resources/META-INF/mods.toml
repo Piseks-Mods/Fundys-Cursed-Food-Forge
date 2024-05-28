@@ -4,7 +4,7 @@ license="MIT License"
 
 [[mods]]
 modId="fundys_cursed_food"
-version="1.0.4.11"
+version="1.0.4.1b2"
 displayName="Fundy's Cursed Food"
 displayURL="https://www.curseforge.com/minecraft/mc-mods/fundys-cursed-food"
 logoFile="logo.png"
@@ -12,13 +12,15 @@ credits="Source code: https://github.com/Piseks-Mods/Fundys-Cursed-Food-Forge/"
 authors="Písek Pískovec"
 description="Fundy's Cursed Food from his video"
 
+# Start of user code block mod configuration
+# End of user code block mod configuration
+
 [[dependencies.fundys_cursed_food]]
     modId="minecraft"
     mandatory=true
     versionRange="[1.20.1]"
     ordering="NONE"
     side="BOTH"
-
 
 
 

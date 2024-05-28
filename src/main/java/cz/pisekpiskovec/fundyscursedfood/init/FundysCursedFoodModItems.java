@@ -40,4 +40,6 @@ public class FundysCursedFoodModItems {
 	public static final RegistryObject<Item> SALMUTTOTABREABBITLECOCHICARROCHOPIE_PIE = REGISTRY.register("salmuttotabreabbitlecochicarrochopie_pie", () -> new SalmuttotabreabbitlecochicarrochopiePieItem());
 	public static final RegistryObject<Item> SALMUTTOTABREABBITLECOCHICARROCHOPOTATIE_PIE = REGISTRY.register("salmuttotabreabbitlecochicarrochopotatie_pie", () -> new SalmuttotabreabbitlecochicarrochopotatiePieItem());
 	public static final RegistryObject<Item> SALMUTTOTABREABBITLECOCHICARROCHOPOTATIE_PIE_CAKE = REGISTRY.register("salmuttotabreabbitlecochicarrochopotatie_pie_cake", () -> new SalmuttotabreabbitlecochicarrochopotatiePieCakeItem());
+	// Start of user code block custom items
+	// End of user code block custom items
 }

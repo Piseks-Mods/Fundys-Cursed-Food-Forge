@@ -208,6 +208,10 @@
           {
             "name": "entity",
             "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
           }
         ]
       }
@@ -231,6 +235,10 @@
           {
             "name": "sourceentity",
             "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
           }
         ]
       }
@@ -407,6 +415,7 @@
   ],
   "variable_elements": [],
   "sound_elements": [],
+  "tag_elements": {},
   "language_map": {
     "en_us": {
       "item.fundys_cursed_food.steakchop": "Steakchop",
@@ -434,12 +443,11 @@
   "workspaceSettings": {
     "modid": "fundys_cursed_food",
     "modName": "Fundy\u0027s Cursed Food",
-    "version": "1.0.4.1b1",
+    "version": "1.0.4.1b2",
     "description": "Fundy\u0027s Cursed Food from his video",
     "author": "Písek Pískovec",
     "websiteURL": "https://www.curseforge.com/minecraft/mc-mods/fundys-cursed-food",
     "license": "MIT License",
-    "disableForgeVersionCheck": true,
     "serverSideOnly": false,
     "modPicture": "fundys_cursed_food",
     "requiredMods": [],
@@ -448,8 +456,7 @@
     "mcreatorDependencies": [],
     "currentGenerator": "forge-1.20.1",
     "credits": "Source code: https://github.com/Piseks-Mods/Fundys-Cursed-Food-Forge/",
-    "modElementsPackage": "cz.pisekpiskovec.fundyscursedfood",
-    "lockBaseModFiles": false
+    "modElementsPackage": "cz.pisekpiskovec.fundyscursedfood"
   },
-  "mcreatorVersion": 202300439517
+  "mcreatorVersion": 202400118518
 }

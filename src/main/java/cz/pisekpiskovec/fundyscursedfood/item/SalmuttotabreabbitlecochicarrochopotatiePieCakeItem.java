@@ -29,8 +29,8 @@ public class SalmuttotabreabbitlecochicarrochopotatiePieCakeItem extends Item {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
-		super.appendHoverText(itemstack, world, list, flag);
+	public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
+		super.appendHoverText(itemstack, level, list, flag);
 		list.add(Component.literal("\u00A74this is bound to kill anyone who eats it."));
 	}
 
@@ -40,7 +40,7 @@ public class SalmuttotabreabbitlecochicarrochopotatiePieCakeItem extends Item {
 		double x = entity.getX();
 		double y = entity.getY();
 		double z = entity.getZ();
-		DieEatingProcedureProcedure.execute(entity);
+		DieEatingProcedureProcedure.execute(world, entity);
 		return retval;
 	}
 }

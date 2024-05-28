@@ -1,5 +1,5 @@
 {
-  "_fv": 51,
+  "_fv": 60,
   "_type": "item",
   "definition": {
     "renderType": 0,
@@ -39,6 +39,11 @@
     "inventoryStackSize": 64,
     "onFinishUsingItem": {
       "name": "DieEatingProcedure"
+    },
+    "enableRanged": false,
+    "shootConstantly": false,
+    "projectile": {
+      "value": "Arrow"
     },
     "isFood": true,
     "nutritionalValue": 81,
